@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Page } from "@/components/layout/Page";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -471,38 +472,38 @@ const ReportAnalysis = () => {
             <CardHeader>
               <CardTitle>時段銷售分析</CardTitle>
               <CardDescription>一天中不同時段的銷售情況</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={revenueByHour}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="hour" />
-                      <YAxis />
-                      <Tooltip 
-                        formatter={(value) => [`NT$ ${value.toLocaleString()}`, '營收']}
-                      />
-                      <Bar dataKey="revenue" fill="#2563eb">
-                        {revenueByHour.map((entry, index) => (
-                          <Cell 
-                            key={`cell-${index}`} 
-                            fill={
-                              entry.revenue >= 15000 ? '#16a34a' : 
-                              entry.revenue >= 10000 ? '#2563eb' : 
-                              '#94a3b8'
-                            } 
-                          />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="mt-4 text-sm text-muted-foreground">
-                  <p>從時段分析可看出，中午 (12:00-14:00) 和晚餐 (18:00-20:00) 是營業高峰期，建議在這些時段加強人力配置。</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+            </CardHeader>
+            <CardContent>
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={revenueByHour}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="hour" />
+                    <YAxis />
+                    <Tooltip 
+                      formatter={(value) => [`NT$ ${value.toLocaleString()}`, '營收']}
+                    />
+                    <Bar dataKey="revenue" fill="#2563eb">
+                      {revenueByHour.map((entry, index) => (
+                        <Cell 
+                          key={`cell-${index}`} 
+                          fill={
+                            entry.revenue >= 15000 ? '#16a34a' : 
+                            entry.revenue >= 10000 ? '#2563eb' : 
+                            '#94a3b8'
+                          } 
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="mt-4 text-sm text-muted-foreground">
+                <p>從時段分析可看出，中午 (12:00-14:00) 和晚餐 (18:00-20:00) 是營業高峰期，建議在這些時段加強人力配置。</p>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
         <TabsContent value="finances" className="mt-0 space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -757,3 +758,14 @@ const ReportAnalysis = () => {
                 <Button variant="outline" size="sm">
                   <Calendar className="w-4 h-4 mr-2" />
                   選擇日期
+                </Button>
+              </div>
+            </CardHeader>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </Page>
+  );
+};
+
+export default ReportAnalysis;
