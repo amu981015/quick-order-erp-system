@@ -58,9 +58,9 @@ const StaffManagement = () => {
   // Today's schedule
   const todaySchedule = staffSchedules.filter(schedule => schedule.day === currentDay);
 
-  // Staff on duty today
+  // Staff on duty today - Fix for staffId property
   const onDutyStaff = todaySchedule.map(schedule => {
-    const employee = staff.find(s => s.staffId === schedule.staffId);
+    const employee = staff.find(s => s.id === schedule.staffId);
     return {
       ...schedule,
       employee
@@ -228,14 +228,14 @@ const StaffManagement = () => {
             </div>
             
             <Select
-              value={positionFilter || ""}
-              onValueChange={(value) => setPositionFilter(value || null)}
+              value={positionFilter || "all"}
+              onValueChange={(value) => setPositionFilter(value === "all" ? null : value)}
             >
               <SelectTrigger className="w-[180px] shrink-0">
                 <SelectValue placeholder="職位" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">所有職位</SelectItem>
+                <SelectItem value="all">所有職位</SelectItem>
                 {positions.map(position => (
                   <SelectItem key={position} value={position}>
                     {position}
