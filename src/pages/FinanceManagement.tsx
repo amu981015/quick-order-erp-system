@@ -190,14 +190,14 @@ const FinanceManagement = () => {
             </div>
             
             <Select
-              value={categoryFilter || ""}
-              onValueChange={(value) => setCategoryFilter(value || null)}
+              value={categoryFilter || "all"}
+              onValueChange={(value) => setCategoryFilter(value === "all" ? null : value)}
             >
               <SelectTrigger className="w-[180px] shrink-0">
                 <SelectValue placeholder="費用類別" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">所有類別</SelectItem>
+                <SelectItem value="all">所有類別</SelectItem>
                 {expenseCategories.map(category => (
                   <SelectItem key={category.id} value={category.id.toString()}>
                     {category.icon} {category.name}
