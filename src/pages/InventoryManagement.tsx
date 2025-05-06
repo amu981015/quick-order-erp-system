@@ -237,14 +237,14 @@ const InventoryManagement = () => {
             </div>
             
             <Select
-              value={categoryFilter || ""}
-              onValueChange={(value) => setCategoryFilter(value || null)}
+              value={categoryFilter || "all"}
+              onValueChange={(value) => setCategoryFilter(value === "all" ? null : value)}
             >
               <SelectTrigger className="w-[180px] shrink-0">
                 <SelectValue placeholder="類別" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">所有類別</SelectItem>
+                <SelectItem value="all">所有類別</SelectItem>
                 {categories.map(category => (
                   <SelectItem key={category} value={category}>
                     {category}
